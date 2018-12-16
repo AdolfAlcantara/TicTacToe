@@ -65,6 +65,7 @@ VL_MODULE(Vtictactoe) {
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
     VL_SIG8(__Vdly__tictactoe__DOT__flip_ram,3,0);
+    VL_SIG8(__Vdly__tictactoe__DOT__draw,0,0);
     VL_SIG8(__Vdly__tictactoe__DOT__winner,1,0);
     VL_SIG8(__Vdlyvset__tictactoe__DOT__board_record__v0,0,0);
     VL_SIG8(__Vdlyvset__tictactoe__DOT__board_record__v1,0,0);

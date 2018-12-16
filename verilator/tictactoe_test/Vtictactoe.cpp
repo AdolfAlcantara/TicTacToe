@@ -190,6 +190,7 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__2(Vtictactoe__Syms* __restrict vlS
     vlTOPp->__Vdly__tictactoe__DOT__selector = vlTOPp->tictactoe__DOT__selector;
     vlTOPp->__Vdly__tictactoe__DOT__sign_address = vlTOPp->tictactoe__DOT__sign_address;
     vlTOPp->__Vdly__tictactoe__DOT__flip_ram = vlTOPp->tictactoe__DOT__flip_ram;
+    vlTOPp->__Vdly__tictactoe__DOT__draw = vlTOPp->tictactoe__DOT__draw;
     __Vdly__tictactoe__DOT__counter = vlTOPp->tictactoe__DOT__counter;
     vlTOPp->__Vdly__tictactoe__DOT__hcount = vlTOPp->tictactoe__DOT__hcount;
     vlTOPp->__Vdly__tictactoe__DOT__vcount = vlTOPp->tictactoe__DOT__vcount;
@@ -223,10 +224,10 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__2(Vtictactoe__Syms* __restrict vlS
 	vlTOPp->tictactoe__DOT__enable = 0U;
 	vlTOPp->tictactoe__DOT__getRandom = 0U;
 	vlTOPp->tictactoe__DOT__board_pos = 0U;
-	vlTOPp->tictactoe__DOT__draw = 1U;
 	vlTOPp->__Vdly__tictactoe__DOT__hcount = 0U;
 	vlTOPp->__Vdly__tictactoe__DOT__vcount = 0U;
 	vlTOPp->__Vdly__tictactoe__DOT__flip_ram = 2U;
+	vlTOPp->__Vdly__tictactoe__DOT__draw = 1U;
     } else {
 	if ((0x41fU == (IData)(vlTOPp->tictactoe__DOT__hcount))) {
 	    vlTOPp->__Vdly__tictactoe__DOT__vcount 
@@ -244,19 +245,19 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__2(Vtictactoe__Syms* __restrict vlS
 	    vlTOPp->__Vdly__tictactoe__DOT__board_address = 0U;
 	}
 	if (vlTOPp->tictactoe__DOT__won_condition) {
-	    vlTOPp->tictactoe__DOT__getRandom = 0U;
-	    vlTOPp->tictactoe__DOT__enable = 0U;
-	    vlTOPp->tictactoe__DOT__draw = 1U;
-	    if ((0xdbba0U > vlTOPp->tictactoe__DOT__counter)) {
+	    if ((0xf4240U == vlTOPp->tictactoe__DOT__counter)) {
 		vlTOPp->tictactoe__DOT__color_selector = 7U;
-	    }
-	    if ((0x6ddd0U > vlTOPp->tictactoe__DOT__counter)) {
-		vlTOPp->tictactoe__DOT__color_selector 
-		    = vlTOPp->tictactoe__DOT__winner;
-	    }
-	    if ((0xdbba0U == vlTOPp->tictactoe__DOT__counter)) {
-		vlTOPp->tictactoe__DOT__color_selector = 7U;
+		vlTOPp->tictactoe__DOT__getRandom = 0U;
 		__Vdly__tictactoe__DOT__counter = 0U;
+		vlTOPp->__Vdly__tictactoe__DOT__draw = 1U;
+	    } else {
+		if ((0xf4240U > vlTOPp->tictactoe__DOT__counter)) {
+		    vlTOPp->tictactoe__DOT__color_selector = 7U;
+		}
+		if ((0x7a120U > vlTOPp->tictactoe__DOT__counter)) {
+		    vlTOPp->tictactoe__DOT__color_selector 
+			= vlTOPp->tictactoe__DOT__winner;
+		}
 	    }
 	} else {
 	    if (VL_UNLIKELY((0xdbba0U == vlTOPp->tictactoe__DOT__counter))) {
@@ -299,7 +300,7 @@ void Vtictactoe::_settle__TOP__3(Vtictactoe__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtictactoe::_settle__TOP__3\n"); );
     Vtictactoe* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    // ALWAYS at ../xo//../xo/tictactoe.v:122
+    // ALWAYS at ../xo//../xo/tictactoe.v:123
     vlTOPp->vsync = (1U & (~ ((0x259U <= (IData)(vlTOPp->tictactoe__DOT__vcount)) 
 			      & (0x25dU > (IData)(vlTOPp->tictactoe__DOT__vcount)))));
     vlTOPp->hsync = (1U & (~ ((0x348U <= (IData)(vlTOPp->tictactoe__DOT__hcount)) 
@@ -351,7 +352,7 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__6(Vtictactoe__Syms* __restrict vlS
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtictactoe::_sequent__TOP__6\n"); );
     Vtictactoe* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    // ALWAYS at ../xo//../xo/tictactoe.v:143
+    // ALWAYS at ../xo//../xo/tictactoe.v:144
     vlTOPp->tictactoe__DOT__board[vlTOPp->tictactoe__DOT__board_pos] 
 	= ((0U == VL_MODDIV_III(32, (IData)(vlTOPp->tictactoe__DOT__flip_ram), (IData)(2U)))
 	    ? 1U : 2U);
@@ -694,7 +695,7 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__7(Vtictactoe__Syms* __restrict vlS
     VL_SIG16(__Vdlyvval__tictactoe__DOT__board_record__v16,14,0);
     VL_SIG16(__Vdlyvval__tictactoe__DOT__board_record__v17,14,0);
     // Body
-    // ALWAYS at ../xo//../xo/tictactoe.v:257
+    // ALWAYS at ../xo//../xo/tictactoe.v:258
     if (vlTOPp->rst) {
 	vlTOPp->tictactoe__DOT__won_condition = 0U;
 	vlTOPp->tictactoe__DOT__board[0U] = 0U;
@@ -1084,6 +1085,7 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__7(Vtictactoe__Syms* __restrict vlS
     }
     vlTOPp->tictactoe__DOT__flip_ram = vlTOPp->__Vdly__tictactoe__DOT__flip_ram;
     vlTOPp->tictactoe__DOT__board_pos = vlTOPp->tictactoe__DOT__numb__DOT__r_LFSR;
+    vlTOPp->tictactoe__DOT__draw = vlTOPp->__Vdly__tictactoe__DOT__draw;
     vlTOPp->tictactoe__DOT__win_address = vlTOPp->__Vdly__tictactoe__DOT__win_address;
     vlTOPp->tictactoe__DOT__won_word = vlTOPp->__Vdly__tictactoe__DOT__won_word;
     vlTOPp->tictactoe__DOT__won_address = vlTOPp->__Vdly__tictactoe__DOT__won_address;
@@ -1092,7 +1094,7 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__7(Vtictactoe__Syms* __restrict vlS
     vlTOPp->tictactoe__DOT__sign_address = vlTOPp->__Vdly__tictactoe__DOT__sign_address;
     vlTOPp->tictactoe__DOT__hcount = vlTOPp->__Vdly__tictactoe__DOT__hcount;
     vlTOPp->tictactoe__DOT__vcount = vlTOPp->__Vdly__tictactoe__DOT__vcount;
-    // ALWAYSPOST at ../xo//../xo/tictactoe.v:268
+    // ALWAYSPOST at ../xo//../xo/tictactoe.v:269
     if (vlTOPp->__Vdlyvset__tictactoe__DOT__board_record__v0) {
 	vlTOPp->tictactoe__DOT__board_record[1U] = 0U;
     }
@@ -1173,7 +1175,7 @@ VL_INLINE_OPT void Vtictactoe::_sequent__TOP__7(Vtictactoe__Syms* __restrict vlS
 						 vlTOPp->tictactoe__DOT__data2__DOT__dat2__DOT__rom_content
 						 [vlTOPp->tictactoe__DOT__sign_address]
 						  : 0U));
-    // ALWAYS at ../xo//../xo/tictactoe.v:122
+    // ALWAYS at ../xo//../xo/tictactoe.v:123
     vlTOPp->vsync = (1U & (~ ((0x259U <= (IData)(vlTOPp->tictactoe__DOT__vcount)) 
 			      & (0x25dU > (IData)(vlTOPp->tictactoe__DOT__vcount)))));
     vlTOPp->hsync = (1U & (~ ((0x348U <= (IData)(vlTOPp->tictactoe__DOT__hcount)) 
@@ -1319,6 +1321,7 @@ void Vtictactoe::_ctor_var_reset() {
     __Vdly__tictactoe__DOT__hcount = VL_RAND_RESET_I(11);
     __Vdly__tictactoe__DOT__vcount = VL_RAND_RESET_I(10);
     __Vdly__tictactoe__DOT__flip_ram = VL_RAND_RESET_I(4);
+    __Vdly__tictactoe__DOT__draw = VL_RAND_RESET_I(1);
     __Vdly__tictactoe__DOT__board_address = VL_RAND_RESET_I(19);
     __Vdly__tictactoe__DOT__sign_address = VL_RAND_RESET_I(15);
     __Vdly__tictactoe__DOT__win_address = VL_RAND_RESET_I(15);

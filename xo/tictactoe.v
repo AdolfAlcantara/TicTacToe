@@ -53,7 +53,7 @@ module tictactoe(
             getRandom=1'd0;
             flip_ram <=4'd2;
             board_pos=4'd0;
-            draw=1'd1;
+            draw<=1'd1;
         end
         else begin
             if (hcount == 11'd1055) begin
@@ -79,17 +79,18 @@ module tictactoe(
 
             counter <= counter + 27'd1;
             if(won_condition) begin
-                getRandom = 1'd0;
-                enable=1'd0;
-                draw=1'd1;
-                if(counter<27'd900000)
-                    color_selector = 8'd7;
-                if(counter<27'd450000)
-                    color_selector = winner;
-                if(counter==27'd900000)begin
+                if(counter==27'd1000000)begin
                     color_selector = 8'd7;
                     counter<=27'd0;
-                    
+                     draw<=1'd1;
+                    getRandom = 1'd0;
+                    // enable=1'd0;
+                end
+                else begin
+                    if(counter<27'd1000000)
+                        color_selector = 8'd7;
+                    if(counter<27'd500000)
+                        color_selector = winner;
                 end
                 // $display("counter: %d",counter);
             end
